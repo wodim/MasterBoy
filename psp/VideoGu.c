@@ -66,8 +66,8 @@ void VideoGuInit(void)
 		oslInitConsole();
 		oslStartDrawing();
 		oslEndDrawing();
-		oslShowSplashScreen(2);
-		oslShowSplashScreen(1);
+		// oslShowSplashScreen(2);
+		// oslShowSplashScreen(1);
 		VideoGuScreenClear();
 
 		//Main screen: in VRAM for speed
