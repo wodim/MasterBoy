@@ -20,6 +20,7 @@ int oslLoadStartModule(char *path)
     return 0;
 }
 
+#if 0
 int oslInitUsbStorage()		{
 	int retVal;
     //Lance les drivers USB
@@ -69,5 +70,6 @@ int oslDeinitUsbStorage()			{
 		return -3;
 	return 0;
 }
+#endif
 
 
