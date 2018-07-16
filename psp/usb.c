@@ -53,7 +53,7 @@ void oslStopUsbStorage()		{
 int oslDeinitUsbStorage()			{
 	unsigned long state;
 	int retVal;
-	
+
 	state = oslGetUsbState();
     //cleanup drivers
     if (state & PSP_USB_ACTIVATED) {

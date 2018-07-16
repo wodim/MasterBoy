@@ -189,7 +189,7 @@ void vdp_write(int offset, uint8 data)
                         MARK_BG_DIRTY(vdp.addr);
                     }
                     break;
-        
+
                 case 3: /* CRAM write */
                     index = (vdp.addr & 0x1F);
                     if(data != vdp.cram[index])
@@ -220,7 +220,7 @@ void vdp_write(int offset, uint8 data)
                     vdp.buffer = vdp.vram[vdp.addr & 0x3FFF];
                     vdp.addr = (vdp.addr + 1) & 0x3FFF;
                 }
-        
+
                 if(vdp.code == 2)
                 {
                     int r = (data & 0x0F);
@@ -302,10 +302,10 @@ void gg_vdp_write(int offset, uint8 data)
                         MARK_BG_DIRTY(vdp.addr);
                     }
                     break;
-        
+
                 case 3: /* CRAM write */
                     if(vdp.addr & 1)
-                    {                    
+                    {
                         vdp.cram_latch = (vdp.cram_latch & 0x00FF) | ((data & 0xFF) << 8);
                         vdp.cram[(vdp.addr & 0x3E) | (0)] = (vdp.cram_latch >> 0) & 0xFF;
                         vdp.cram[(vdp.addr & 0x3E) | (1)] = (vdp.cram_latch >> 8) & 0xFF;
@@ -338,7 +338,7 @@ void gg_vdp_write(int offset, uint8 data)
                     vdp.buffer = vdp.vram[vdp.addr & 0x3FFF];
                     vdp.addr = (vdp.addr + 1) & 0x3FFF;
                 }
-        
+
                 if(vdp.code == 2)
                 {
                     int r = (data & 0x0F);
@@ -375,7 +375,7 @@ void md_vdp_write(int offset, uint8 data)
                         MARK_BG_DIRTY(vdp.addr);
                     }
                     break;
-        
+
                 case 2: /* CRAM write */
                 case 3: /* CRAM write */
                     index = (vdp.addr & 0x1F);
@@ -406,7 +406,7 @@ void md_vdp_write(int offset, uint8 data)
                     vdp.buffer = vdp.vram[vdp.addr & 0x3FFF];
                     vdp.addr = (vdp.addr + 1) & 0x3FFF;
                 }
-        
+
                 if(vdp.code == 2)
                 {
                     int r = (data & 0x0F);
@@ -466,7 +466,7 @@ void tms_write(int offset, int data)
                     vdp.buffer = vdp.vram[vdp.addr & 0x3FFF];
                     vdp.addr = (vdp.addr + 1) & 0x3FFF;
                 }
-        
+
                 if(vdp.code == 2)
                 {
                     int r = (data & 0x07);

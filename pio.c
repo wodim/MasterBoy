@@ -20,7 +20,7 @@ void pio_init(void)
             io_lut[j][i].tr_dir[0]   = (i & 0x01) ? PIN_DIR_IN : PIN_DIR_OUT;
             io_lut[j][i].th_dir[0]   = (i & 0x02) ? PIN_DIR_IN : PIN_DIR_OUT;
             io_lut[j][i].tr_dir[1]   = (i & 0x04) ? PIN_DIR_IN : PIN_DIR_OUT;
-            io_lut[j][i].th_dir[1]   = (i & 0x08) ? PIN_DIR_IN : PIN_DIR_OUT; 
+            io_lut[j][i].th_dir[1]   = (i & 0x08) ? PIN_DIR_IN : PIN_DIR_OUT;
 
             if(j == 1)
             {
@@ -155,7 +155,7 @@ uint8 input_r(int offset)
                 temp &= ~0x08;
                 temp |= (io_current->tr_level[1] == PIN_LVL_HI) ? 0x08 : 0x00;
             }
-        
+
             /* Adjust TH state if it is an output */
             if(io_current->th_dir[1] == PIN_DIR_OUT) {
                 temp &= ~0x80;
@@ -248,7 +248,7 @@ void sio_w(int offset, int data)
         case 5: /* Serial control */
             sms.sio.sctrl = data & 0xF8;
             return;
-        
+
         case 6: /* Stereo output control */
             psg_stereo_w(data);
             return;

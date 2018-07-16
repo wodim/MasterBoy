@@ -368,7 +368,7 @@ byte cheat_write(word adr, byte dat);
 extern int bit_received;
 extern int bits_received;
 extern int packets_received;
-extern int sgb_state; 
+extern int sgb_state;
 extern int sgb_index;
 extern int sgb_multiplayer;
 extern int sgb_fourplayers;

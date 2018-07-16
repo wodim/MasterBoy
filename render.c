@@ -8,7 +8,7 @@
 static const uint8 tms_palette[16][3] = {
     {   0,   0,   0}, /* Transparent */
     {   0,   0,   0}, /* Black */
-    {  33, 200,  66}, 
+    {  33, 200,  66},
     {  94, 220, 120},
     {  84,  85, 237},
     { 125, 118, 252},
@@ -180,7 +180,7 @@ void render_init(void)
                     }
                     else
                     {
-                        
+
                         if(s)
                         {
                             c = sf;
@@ -237,7 +237,7 @@ void render_init(void)
     for(i = 0; i < 16; i++)
     {
         uint8 c = i << 4 | i;
-        gg_cram_expand_table[i] = c;        
+        gg_cram_expand_table[i] = c;
     }
 
     render_reset();
@@ -372,7 +372,7 @@ void render_bg_sms(int line)
 
         /* Point to a line of pattern data in cache */
         cache_ptr = (uint32 *)&bg_pattern_cache[((attr & 0x7FF) << 6) | (v_row)];
-        
+
         /* Copy the left half, adding the attribute bits in */
         write_dword( &linebuf_ptr[(column << 1)] , read_dword( &cache_ptr[0] ) | (atex_mask));
 
@@ -465,7 +465,7 @@ void render_obj_sms_nospritelimit(int line)
             /* Too many sprites on this line ? */
  /*           if(count == 9)
             {
-                vdp.status |= 0x40;                
+                vdp.status |= 0x40;
                 goto end;
             }*/
 
@@ -488,7 +488,7 @@ void render_obj_sms_nospritelimit(int line)
             }
 
             /* Clip sprites on right edge */
-            if((xp + width) > 256)        
+            if((xp + width) > 256)
             {
                 end = (256 - xp);
             }
@@ -504,16 +504,16 @@ void render_obj_sms_nospritelimit(int line)
                 {
                     /* Source pixel from cache */
                     uint8 sp = cache_ptr[(x >> 1)];
-    
+
                     /* Only draw opaque sprite pixels */
                     if(sp)
                     {
                         /* Background pixel from line buffer */
                         uint8 bg = linebuf_ptr[x];
-    
+
                         /* Look up result */
                         linebuf_ptr[x] = lut[(bg << 8) | (sp)];
-    
+
                         /* Update collision buffer */
                         collision_buffer |= bg;
                     }
@@ -529,16 +529,16 @@ void render_obj_sms_nospritelimit(int line)
                 {
                     /* Source pixel from cache */
                     uint8 sp = cache_ptr[x];
-    
+
                     /* Only draw opaque sprite pixels */
                     if(sp)
                     {
                         /* Background pixel from line buffer */
                         uint8 bg = linebuf_ptr[x];
-    
+
                         /* Look up result */
                         linebuf_ptr[x] = lut[(bg << 8) | (sp)];
-    
+
                         /* Update collision buffer */
                         collision_buffer |= bg;
                     }
@@ -612,7 +612,7 @@ void render_obj_sms(int line)
             /* Too many sprites on this line ? */
             if(count == 9)
             {
-                vdp.status |= 0x40;                
+                vdp.status |= 0x40;
                 goto end;
             }
 
@@ -635,7 +635,7 @@ void render_obj_sms(int line)
             }
 
             /* Clip sprites on right edge */
-            if((xp + width) > 256)        
+            if((xp + width) > 256)
             {
                 end = (256 - xp);
             }
@@ -651,16 +651,16 @@ void render_obj_sms(int line)
                 {
                     /* Source pixel from cache */
                     uint8 sp = cache_ptr[(x >> 1)];
-    
+
                     /* Only draw opaque sprite pixels */
                     if(sp)
                     {
                         /* Background pixel from line buffer */
                         uint8 bg = linebuf_ptr[x];
-    
+
                         /* Look up result */
                         linebuf_ptr[x] = lut[(bg << 8) | (sp)];
-    
+
                         /* Update collision buffer */
                         collision_buffer |= bg;
                     }
@@ -676,16 +676,16 @@ void render_obj_sms(int line)
                 {
                     /* Source pixel from cache */
                     uint8 sp = cache_ptr[x];
-    
+
                     /* Only draw opaque sprite pixels */
                     if(sp)
                     {
                         /* Background pixel from line buffer */
                         uint8 bg = linebuf_ptr[x];
-    
+
                         /* Look up result */
                         linebuf_ptr[x] = lut[(bg << 8) | (sp)];
-    
+
                         /* Update collision buffer */
                         collision_buffer |= bg;
                     }

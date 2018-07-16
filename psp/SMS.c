@@ -53,7 +53,7 @@ int gb_save_sram(VIRTUAL_FILE *fd, byte *buf,int size)
 int gb_load_sram(VIRTUAL_FILE *fd, byte *buf, int bufsize)
 {
 	memset(buf, 0, bufsize);
-	
+
 	int ramsize = VirtualFileRead(buf, 1, bufsize, fd);
 	if(ramsize & 4)
 		renderer_set_timer_state(*(int*)(buf+ramsize-4));
@@ -176,7 +176,7 @@ int MenuPlusAction(int action, void* param)			{
 
 			strcpy(menuConfig.file.filename, (char*)param);
 
-			if(load_rom(menuConfig.file.filename) == 0) 
+			if(load_rom(menuConfig.file.filename) == 0)
 			{
 				return 0;
 			}

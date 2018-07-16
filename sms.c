@@ -76,7 +76,7 @@ void sms_init(void)
             cpu_writeport16 = smsj_port_w;
             cpu_readport16 = smsj_port_r;
             break;
-  
+
         case CONSOLE_SMS2:
             cpu_writeport16 = sms_port_w;
             cpu_readport16 = sms_port_r;
@@ -179,7 +179,7 @@ void sms_mapper_w(int address, int data)
             else
             {
                 for(i = 0x20; i <= 0x2F; i++)
-                {          
+                {
                     cpu_readmap[i] = &cart.rom[((cart.fcr[3] % cart.pages) << 14) | ((i & 0x0F) << 10)];
                     cpu_writemap[i] = dummy_write;
                 }

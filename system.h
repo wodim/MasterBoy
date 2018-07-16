@@ -19,7 +19,7 @@
 #define INPUT_BUTTON2       0x00000010
 
 /* These can be used for 'input.system' */
-#define INPUT_START         0x00000001  /* Game Gear only */    
+#define INPUT_START         0x00000001  /* Game Gear only */
 #define INPUT_PAUSE         0x00000002  /* Master System only */
 #define INPUT_RESET         0x00000004  /* Master System only */
 
@@ -62,7 +62,7 @@ typedef struct
         int x, y, w, h;
         int ox, oy, ow, oh;
         int changed;
-    } viewport;        
+    } viewport;
     struct
     {
         uint8 color[PALETTE_SIZE][3];

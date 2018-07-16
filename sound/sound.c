@@ -166,7 +166,7 @@ void sound_reset(void)
 void sound_update(int line)
 {
     int16 *fm[2], *psg[2];
-	
+
     if(!snd.enabled)
         return;
 
@@ -186,16 +186,16 @@ void sound_update(int line)
 
 	/* Mix streams into output buffer */
     	snd.mixer_callback(snd.stream, snd.output, snd.sample_count);
-    	
+
     	/* Reset */
     	snd.done_so_far = 0;
     }
     else
     {
     	int tinybit;
-    	
+
     	tinybit = smptab[line] - snd.done_so_far;
-    	
+
         /* Do a tiny bit */
     	psg[0] = psg_buffer[0] + snd.done_so_far;
     	psg[1] = psg_buffer[1] + snd.done_so_far;
@@ -229,9 +229,9 @@ void sound_update_gb(int line)
     else
     {
     	int tinybit;
-    	
+
     	tinybit = smptab[line] - snd.done_so_far;
-    	
+
 		if (tinybit > 0)
 			snd_render_orig(snd.output + snd.done_so_far, tinybit);
 
@@ -254,7 +254,7 @@ void sound_update_ex(void *outBuffer, int sampleCount)
 {
     int16 *psg[2];
 	int16 *temp_buf;
-	
+
     if(!snd.enabled)
         return;
 

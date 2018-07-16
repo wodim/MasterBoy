@@ -1,5 +1,5 @@
 // Not much in here at the moment
-/*typedef struct 
+/*typedef struct
 {
 	char GameName[100];
 	int SoundEnabled;

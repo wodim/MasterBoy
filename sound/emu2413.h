@@ -36,7 +36,7 @@ typedef struct {
 /* slot */
 typedef struct {
 
-  OPLL_PATCH *patch;  
+  OPLL_PATCH *patch;
 
   int type ;          /* 0 : modulator 1 : carrier */
 
@@ -96,7 +96,7 @@ typedef struct {
   int32 output[2] ;
 
   /* Register */
-  unsigned char reg[0x40] ; 
+  unsigned char reg[0x40] ;
   int slot_on_flag[18] ;
 
   /* Rythm Mode : 0 = OFF, 1 = ON */
@@ -134,7 +134,7 @@ typedef struct {
   uint32 mask ;
 
   int masterVolume ; /* 0min -- 64 -- 127 max (Liner) */
-  
+
 } OPLL ;
 
 /* Initialize */

@@ -13,16 +13,16 @@
 typedef struct
 {
     uint8 vram[0x4000];
-    uint8 cram[0x40]; 
+    uint8 cram[0x40];
     uint8 reg[0x10];
-    uint8 status;     
-    uint8 latch;      
-    uint8 pending;    
-    uint8 buffer;     
-    uint8 code;       
+    uint8 status;
+    uint8 latch;
+    uint8 pending;
+    uint8 buffer;
+    uint8 code;
     uint16 addr;
     int pn, ct, pg, sa, sg;
-    int ntab;        
+    int ntab;
     int satb;
     int line;
     int left;

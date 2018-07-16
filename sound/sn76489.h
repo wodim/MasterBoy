@@ -39,20 +39,20 @@ typedef struct
     int Mute;
     int BoostNoise;
     int VolumeArray;
-    
+
     /* Variables */
     float Clock;
     float dClock;
     int PSGStereo;
     int NumClocksForSample;
     int WhiteNoiseFeedback;
-    
+
     /* PSG registers: */
     UINT16 Registers[8];        /* Tone, vol x4 */
     int LatchedRegister;
     UINT16 NoiseShiftRegister;
     INT16 NoiseFreq;            /* Noise channel signal generator frequency */
-    
+
     /* Output calculation variables */
     INT16 ToneFreqVals[4];      /* Frequency register values (counters) */
     INT8 ToneFreqPos[4];        /* Frequency channel flip-flops */
