@@ -1781,7 +1781,7 @@ int fctMainFileSram(SUBMENU *menu, SUBMENUITEM *sub, u32 event)
 }
 
 SUBMENUITEM menuMainFileSramItems[]=		{
-	{"Autosave SRAM", "Save SRAM when quitting a game", "", &menuMainFileSramAutosave},
+	{"Autosave SRAM", "Save SRAM automatically", "", &menuMainFileSramAutosave},
 	{"Save SRAM", "Save SRAM now", "", NULL, 1},
 };
 

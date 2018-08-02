@@ -24,7 +24,10 @@
 #include "../syscall.h"
 #include "_bit_table.h"
 
+#define WRITE_BACKUP_DELAY  (10)
+
 extern unsigned int gblCpuCycles;
+extern unsigned int backup_update;
 
 #define Z_FLAG 0x40
 #define H_FLAG 0x10
@@ -309,6 +312,7 @@ void cpu_write_direct_ord(word adr,byte dat)
 			mbc_get_sram()[adr&0x1FFF]=dat;//カートリッジRAM
 		else
 			mbc_ext_write(adr,dat);
+		backup_update = WRITE_BACKUP_DELAY;
 		break;
 	case 6:
 		if (adr&0x1000)
@@ -346,6 +350,7 @@ inline void cpu_write_direct(word adr,byte dat)
 			mbc_get_sram()[adr&0x1FFF]=dat;//カートリッジRAM
 		else
 			mbc_ext_write(adr,dat);
+		backup_update = WRITE_BACKUP_DELAY;
 	} else {
 		cpu_write_direct_ord(adr,dat);
 	}

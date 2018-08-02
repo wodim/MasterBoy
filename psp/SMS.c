@@ -24,6 +24,9 @@ int gblNewGame = 0;
 uLong sram_crc;
 unsigned int gblCpuCycles = 0;
 
+// If the backup space is written (only update once this hits 0)
+unsigned int backup_update = WRITE_BACKUP_DELAY + 1;
+
 //Does a frame
 void machine_frame(int skip)		{
 	if (gblMachineType == EM_SMS)
@@ -116,17 +119,17 @@ int machine_manage_sram(int mode, int force)			{
 				sram_crc = crc;
 			}
 
-			if (BatteryWarning("Your battery is low!\nDo you want to save the SRAM contents?\n(This might corrupt your Memory Stick if your PSP stops during this operation.)"))			{
-				fd = VirtualFileOpen(name, 0, VF_GZFILE, VF_O_WRITE);
-				if (fd)
-				{
-					if (gblMachineType == EM_SMS)
-						VirtualFileWrite(cart.sram, 0x8000, 1, fd);
-					else if (gblMachineType == EM_GBC)
-						gb_save_sram(fd, get_sram(), rom_get_info()->ram_size);
-					VirtualFileClose(fd);
-				}
+			scePowerLock(0);
+			fd = VirtualFileOpen(name, 0, VF_GZFILE, VF_O_WRITE);
+			if (fd)
+			{
+				if (gblMachineType == EM_SMS)
+					VirtualFileWrite(cart.sram, 0x8000, 1, fd);
+				else if (gblMachineType == EM_GBC)
+					gb_save_sram(fd, get_sram(), rom_get_info()->ram_size);
+				VirtualFileClose(fd);
 			}
+			scePowerUnlock(0);
             break;
 
         case SRAM_LOAD:
@@ -521,6 +524,18 @@ void SmsEmulate()
 						snd_render_orig(snd.output, snd.sample_count);
 						SoundUpdate();
 					}
+				}
+			}
+
+			if (menuConfig.file.sramAutosave) {
+				if (backup_update != (WRITE_BACKUP_DELAY + 1)) {
+					backup_update--;
+				}
+
+				if (backup_update == 0)
+				{
+					machine_manage_sram(SRAM_SAVE, 0);
+					backup_update = WRITE_BACKUP_DELAY + 1;
 				}
 			}
 		}

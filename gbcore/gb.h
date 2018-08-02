@@ -37,6 +37,10 @@ extern int cheat_enable;
 #define INT_SERIAL 8
 #define INT_PAD 16
 
+// Write out backup file this many cycles after the most recent
+// backup write.
+#define WRITE_BACKUP_DELAY  (10)
+
 struct ext_hook{
 	byte (*send)(byte);
 	char (*led)(void);
